@@ -1,0 +1,29 @@
+rbac:
+  create: true
+defaultBackend:
+  enabled: false
+controller:
+  ingressClass: "nginx"
+  watchNamespace: cloudbees-core
+  config: 
+    entries:
+      stream-snippets: |
+        upstream cjoc-tcp {
+          server cjoc.cloudbees-core.svc.cluster.local:50000;
+        }
+        server {
+          listen 50000;
+          proxy_pass cjoc-tcp;
+        }
+  customPorts:
+    - name: 50000-tcp
+      containerPort: 50000
+      protocol: TCP
+  service:
+    externalTrafficPolicy: "Local"
+    name: "cloudbees-ingress"
+    customPorts:
+      - protocol: TCP
+        port: 50000
+        name: 50000-tcp
+

@@ -1,0 +1,14 @@
+kind: ConfigMap
+apiVersion: v1
+metadata:
+  name: nginx-ingress-nginx-ingress
+  namespace: ingress-nginx
+data:
+    stream-snippets: |
+      upstream cjoc-tcp {
+          server cjoc.cloudbees-core.svc.cluster.local:50000;
+      }
+      server {
+          listen 50000;
+          proxy_pass cjoc-tcp;
+      }

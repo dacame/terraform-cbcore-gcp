@@ -1,0 +1,7 @@
+project = "my-gcp-project"
+gcp-region = "europe-west1"
+gcp-zone = "europe-west1-c"
+numnodes = 3
+credentials ="file_to_your_gcp_key.json"
+image = false
+cjoc_host = ""

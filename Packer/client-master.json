@@ -1,0 +1,26 @@
+{
+    "variables": {
+        "gcloud_account_json": "",
+        "gcloud_project_id": ""
+    },
+    "builders": [
+        {
+            "type": "googlecompute",
+            "account_file": "{{user `gcloud_account_json`}}",
+            "project_id": "{{user `gcloud_project_id`}}",
+            "source_image_family": "debian-9",
+            "image_name": "cm-core-{{timestamp}}",
+            "image_family": "cloudbees-core",
+            "machine_type": "n1-standard-2",
+            "ssh_username": "jenkins",
+            "zone": "europe-west1-c"
+
+        }
+    ],
+    "provisioners": [
+        {
+            "type": "shell",
+            "script": "./update-cm.sh"
+        }
+    ] 
+}

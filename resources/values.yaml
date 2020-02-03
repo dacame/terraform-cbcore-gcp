@@ -1,0 +1,16 @@
+# A helm example values file for migrating a CloudBees Core for Modern Platfrom Install.
+# Install an nginx-ingress controller
+nginx-ingress:
+  # Change this to true, if you want to install the NGINX Ingress Controller
+  Enabled: false
+  tcp:
+    50000: "cloudbees-core/cjoc:50000"
+OperationsCenter:
+  # Set the HostName for the Operation Center
+  HostName: 'example.gke.dcanadillas.com'
+  Ingress:
+    tls:
+    ## Set this to true in order to enable TLS on the ingress record
+      Enable: true
+      SecretName: cbcore-dcanadillas-tls
+      Host: example.gke.dcanadillas.com
