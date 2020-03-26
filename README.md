@@ -80,7 +80,7 @@ To deploy CloudBees Core platform using Terraform, this project has defined diff
 * `numnodes`. Number of initial nodes for your GKE cluster (cluster is configured for autoscaling 3-6)
 * `credentials`. Your credentials key JSON file path for your GCP service account.
 * `image`. Parameter to use VMs images if deploying Client Masters (set it to `true` if you want to deploy a CloudBees Core Client Master)
-`cjoc_host`. Hostname with domain for your Operations Center (e.g. `cjoc.mydomain.com`). If not set, it will configure your cluster with a `*.nip.io` domain.
+* `cjoc_host`. Hostname with domain for your Operations Center (e.g. `cjoc.mydomain.com`). If not set, it will configure your cluster with a `*.nip.io` domain.
 
 > NOTE: The parameters `gcp-region` and `gcp-zone` are only used as variables to connect with the [Terraform Google provider](https://www.terraform.io/docs/providers/google/index.html), but not parametrized in the modules input in `main.tf` file of the Terraform definition. So, if you want to deploy to your own GCP zone and region, you need to change the values at `cloudbees-core > main.tf`, which are currently harcoded to `europe-west1-c` zone. *This will change, as this repo is a work in progress*
 
